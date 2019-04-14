@@ -27,51 +27,63 @@ export class Form extends Component {
   render() {
     const { name, email, message } = this.state;
     return (
-      <div className="card">
-        <header className="card-header">
-          <div className="card-header-title">All Lead</div>
-        </header>
-        <div className="card-content">
+      <section className="section">
+        <div className="columns is-centered">
+          <div className="column is-10">
 
-          <form onSubmit={this.onSubmit}>
+            <div className="card">
+              <header className="card-header is-primary">
+                <div className="card-header-title">Add A Lead</div>
+              </header>
+              <div className="card-content">
 
-            <div className="field">
-              <label className="label">Name</label>
-              <div className="control">
-                <input className="input" type="text" name="name" onChange={this.onChange} value={name} />
+                <form onSubmit={this.onSubmit}>
+
+                  <div className="columns">
+                    <div className="column">
+                      <div className="field">
+                        <label className="label">Name</label>
+                        <div className="control">
+                          <input className="input is-rounded" type="text" name="name" onChange={this.onChange} value={name} />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="column">
+                      <div className="field">
+                        <label className="label">Email</label>
+                        <div className="control">
+                          <input className="input is-rounded" type="email" name="email" onChange={this.onChange} value={email} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="field">
+                    <label className="label">Message</label>
+                    <div className="control">
+                      <textarea
+                        className="textarea"
+                        type="text"
+                        name="message"
+                        onChange={this.onChange}
+                        value={message}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="field">
+                    <div className="control">
+                      <button className="button" type="submit">Submit</button>
+                    </div>
+                  </div>
+
+                </form>
+
               </div>
             </div>
-
-            <div className="field">
-              <label className="label">Email</label>
-              <div className="control">
-                <input className="input" type="email" name="email" onChange={this.onChange} value={email} />
-              </div>
-            </div>
-
-            <div className="field">
-              <label className="label">Message</label>
-              <div className="control">
-                <textarea
-                  className="textarea"
-                  type="text"
-                  name="message"
-                  onChange={this.onChange}
-                  value={message}
-                />
-              </div>
-            </div>
-
-            <div className="field">
-              <div className="control">
-                <button className="button" type="submit">Submit</button>
-              </div>
-            </div>
-
-          </form>
-
+          </div>
         </div>
-      </div>
+      </section>
     )
   }
 }

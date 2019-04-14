@@ -18,34 +18,36 @@ export class Leads extends Component {
   render() {
     return (
       <Fragment>
-        <h2 className="title is-2">Leads</h2>
+        <section className="section">
+          <h2 className="title is-2">Leads List</h2>
 
-        <table className="table">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Message</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            { this.props.leads.map(lead => (
-              <tr key={lead.id}>
-                <td>{lead.id}</td>
-                <td>{lead.name}</td>
-                <td>{lead.email}</td>
-                <td>{lead.message}</td>
-                <td>
-                  <button onClick={this.props.deleteLead.bind(this, lead.id)} className="button is-danger is-small">
-                    Delete
-                  </button>
-                </td>
+          <table className="table is-striped is-fullwidth">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Message</th>
+                <th></th>
               </tr>
-            )) }
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              { this.props.leads.map(lead => (
+                <tr key={lead.id}>
+                  <td>{lead.id}</td>
+                  <td>{lead.name}</td>
+                  <td>{lead.email}</td>
+                  <td>{lead.message}</td>
+                  <td>
+                    <button onClick={this.props.deleteLead.bind(this, lead.id)} className="button is-danger is-small">
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              )) }
+            </tbody>
+          </table>
+        </section>
 
       </Fragment>
     );
