@@ -25,7 +25,9 @@ SECRET_KEY = '3x8-sp0l)rkxb)_paie_0tu0skz8=yjgf+mgx*1%=#uryd^67*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+]
 
 
 # Application definition
@@ -37,10 +39,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'users',
     'leads',
     'rest_framework',
-    'frontend'
+    'frontend',
+    'knox',
+    'accounts'
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',)
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -71,6 +80,13 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'config.wsgi.application'
+
+
+# Custom User Handling
+
+AUTH_USER_MODEL = 'users.CustomUser'  # Custom user model
+LOGIN_REDIRECT_URL = 'index:index'
+LOGOUT_REDIRECT_URL = 'index:index'
 
 
 # Database

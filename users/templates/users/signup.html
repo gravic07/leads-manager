@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="section signup_form">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-10 content">
+
+
+        <h2>Sign up</h2>
+
+        <p>
+          Please sign up for a Paradise Calvary College account below. Once you
+          are registered, we will give you access to the courses you are
+          are enrolled for.
+        </p>
+
+        <form method="post">
+          {% csrf_token %}
+          {{ form.non_field_errors }}
+
+          <div class="columns">
+            <div class="field column">
+              <label class="label" for="{{ form.first_name.id_for_label }}">
+                {{ form.first_name.label }}
+              </label>
+
+              <div class="control has-icons-left">
+                {{ form.first_name }}
+                <span class="icon is-small is-left">
+                  <i class="fas fa-user"></i>
+                </span>
+              </div>
+
+              <p class="help is-danger">{{ form.first_name.errors }}</p>
+            </div>
+
+
+            <div class="field column">
+              <label class="label" for="{{ form.last_name.id_for_label }}">
+                {{ form.last_name.label }}
+              </label>
+
+              <div class="control has-icons-left">
+                {{ form.last_name }}
+                <span class="icon is-small is-left">
+                  <i class="fas fa-user"></i>
+                </span>
+              </div>
+
+              <p class="help is-danger">{{ form.last_name.errors }}</p>
+            </div>
+          </div>
+
+
+          <div class="field">
+            <label class="label" for="{{ form.email.id_for_label }}">
+              {{ form.email.label }}
+            </label>
+
+            <div class="control has-icons-left">
+              {{ form.email }}
+              <span class="icon is-small is-left">
+                <i class="fas fa-user"></i>
+              </span>
+            </div>
+
+            <p class="help">{{ form.email.help_text }}</p>
+            <p class="help is-danger">{{ form.email.errors }}</p>
+          </div>
+
+
+          <div class="columns">
+            <div class="field column">
+              <label class="label" for="{{ form.password1.id_for_label }}">
+                {{ form.password1.label }}
+              </label>
+
+              <div class="control has-icons-left">
+                {{ form.password1 }}
+                <span class="icon is-small is-left">
+                  <i class="fas fa-user"></i>
+                </span>
+              </div>
+
+              <p class="help">{{ form.password1.help_text }}</p>
+              <p class="help is-danger">{{ form.password1.errors }}</p>
+            </div>
+
+
+            <div class="field column">
+              <label class="label" for="{{ form.password2.id_for_label }}">
+                {{ form.password2.label }}
+              </label>
+
+              <div class="control has-icons-left">
+                {{ form.password2 }}
+                <span class="icon is-small is-left">
+                  <i class="fas fa-user"></i>
+                </span>
+              </div>
+
+              <p class="help">{{ form.password2.help_text }}</p>
+              <p class="help is-danger">{{ form.password2.errors }}</p>
+            </div>
+          </div>
+
+
+          <div class="field is-grouped">
+            <div class="control">
+              <button class="button type="submit" is-link">Submit</button>
+            </div>
+            <div class="control">
+              <a class="button is-text" href="{% url 'index:index' %}">Cancel</a>
+            </div>
+          </div>
+        </form>
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+{% endblock %}
