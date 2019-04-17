@@ -1,16 +1,26 @@
 /*jshint esversion: 6 */
-import React, { Component, Fragment } from 'react';
-import ReactDOM from 'react-dom';
+import React, { Component, Fragment } from "react";
+import ReactDOM from "react-dom";
+// import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import {
+  HashRouter as Router,
+  Route,
+  Switch,
+  Redirect
+} from "react-router-dom";
 
 import { Provider as AlertProvider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
 
-import Header from './layout/Header'
-import Dashboard from './leads/Dashboard'
-import Alerts from './layout/Alerts'
+import Header from "./layout/Header";
+import Dashboard from "./leads/Dashboard";
+import Alerts from "./layout/Alerts";
+import Login from "./accounts/Login";
+import Register from "./accounts/Register";
+import PrivateRoute from "./common/PrivateRoute";
 
-import { Provider } from 'react-redux';
-import store from '../store';
+import { Provider } from "react-redux";
+import store from "../store";
 
 /* Alert Options */
 const alertOptions = {
@@ -23,19 +33,25 @@ class App extends Component {
     return (
       <Provider store={store}>
         <AlertProvider template={AlertTemplate} {...alertOptions}>
-          <Fragment>
-            <Header />
-            <Alerts />
-            <section className="section">
-              <div className="container">
-                <Dashboard />
-              </div>
-            </section>
-          </Fragment>
+          <Router>
+            <Fragment>
+              <Header />
+              <Alerts />
+              <section className="section">
+                <div className="container">
+                  <Switch>
+                    <PrivateRoute exact path="/" component={Dashboard} />
+                    <Route exact path="/register" component={Register} />
+                    <Route exact path="/login" component={Login} />
+                  </Switch>
+                </div>
+              </section>
+            </Fragment>
+          </Router>
         </AlertProvider>
       </Provider>
     );
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById("app"));
